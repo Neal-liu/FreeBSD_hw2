@@ -1,0 +1,94 @@
+Script started on Sun Nov  9 13:31:36 2014
+You have mail.
+root@Neal:~/hw2 # ls
+Backup.sh	P76034711.tar	SendMail.sh	SumLog.sh	backup		logs		typescript
+root@Neal:~/hw2 # csh SumLog.sh 
+root@Neal:~/hw2 # cat [K[K[Kcat sum_log 
+Nov-9-2014 System Log :
+
+<< Failed/Invaid Login >>
+
+==== Illegal Users ====
+Nov 9 05:02:31 recovery from 91.220.131.33
+Nov 9 07:03:32 recovery from 91.220.131.33
+==== Failed Users ====
+Nov 9 13:28:16 operator from 91.220.131.33
+
+<< User Login >>
+root       pts/1    59-127-40-140.hinet-ip Sun Nov  9 12:47   still logged in
+root       pts/0    59-127-40-140.hinet-ip Sun Nov  9 10:43 - 12:56  (02:12)
+
+<< Hard Disk usage >>
+Filesystem     Size    Used   Avail Capacity  Mounted on
+/dev/ada0p2    447G    7.9G    404G     2%    /
+devfs          1.0K    1.0K      0B   100%    /dev
+
+<< Difference of setuid programs >>
+2,3c2,3
+< 27448440 -rwsr-xr-x  1 root  wheel           29 Nov  6 21:16:18 2014 /root/hw2/date
+< 27448444 -rwsr-xr-x  1 root  wheel         3159 Nov  6 21:16:18 2014 /root/hw2/temp
+---
+> 27448440 -rwsr-xr-x  1 root  wheel           29 Nov  5 01:10:11 2014 /root/hw2/date
+> 27448444 -rwsr-xr-x  1 root  wheel         2082 Nov  5 01:09:51 2014 /root/hw2/temp
+root@Neal:~/hw2 # csh Sew[KndMail.sh 
+root@Neal:~/hw2 # cat s[KSendMail.sh 
+#!/bin/csh
+
+set year = `date "+%Y"`
+set month = ` date "+%m" ` 
+set day = ` date "+%d" ` 
+
+mail -s "[hw2]P76034711 呂鴻 $year/$month/$day" hunter0hunter04@hotmail.com.tw < ~/hw2/sum_log
+mail -s "[hw2]P76034711 呂鴻 $year/$month/$day" hw.mike199250@gmail.com < ~/hw2/sum_log
+
+
+
+root@Neal:~/hw2 # csh Backup.sh 
+tar: Removing leading '/' from member names
+tar: Removing leading '/' from member names
+tar: Removing leading '/' from member names
+tar: Removing leading '/' from member names
+sending incremental file list
+Nov9-1332-mail.tar
+
+sent 319,161 bytes  received 35 bytes  27,756.17 bytes/sec
+total size is 352,395  speedup is 1.10
+sending incremental file list
+Nov9-1332-home.tar
+
+sent 200 bytes  received 35 bytes  22.38 bytes/sec
+total size is 101  speedup is 0.43
+sending incremental file list
+Nov9-1332-etc.tar
+
+sent 342,991 bytes  received 35 bytes  29,828.35 bytes/sec
+total size is 345,280  speedup is 1.01
+sending incremental file list
+Nov9-1332-local_etc.tar
+
+sent 186,358 bytes  received 35 bytes  17,751.71 bytes/sec
+total size is 186,408  speedup is 1.00
+root@Neal:~/hw2 # 
+root@Neal:~/hw2 # l[Kcd backup/
+root@Neal:~/hw2/backup # ls -l
+total 3484
+-rw-r--r--  1 root  wheel  345275 Nov  7 02:01 Nov7-0201-etc.tar
+-rw-r--r--  1 root  wheel     101 Nov  7 02:01 Nov7-0201-home.tar
+-rw-r--r--  1 root  wheel  185743 Nov  7 02:01 Nov7-0201-local_etc.tar
+-rw-r--r--  1 root  wheel  347387 Nov  7 02:01 Nov7-0201-mail.tar
+-rw-r--r--  1 root  wheel  345281 Nov  7 21:16 Nov7-2116-etc.tar
+-rw-r--r--  1 root  wheel     101 Nov  7 21:16 Nov7-2116-home.tar
+-rw-r--r--  1 root  wheel  186408 Nov  7 21:16 Nov7-2116-local_etc.tar
+-rw-r--r--  1 root  wheel  347446 Nov  7 21:16 Nov7-2116-mail.tar
+-rw-r--r--  1 root  wheel  345280 Nov  8 21:16 Nov8-2116-etc.tar
+-rw-r--r--  1 root  wheel     101 Nov  8 21:16 Nov8-2116-home.tar
+-rw-r--r--  1 root  wheel  186408 Nov  8 21:16 Nov8-2116-local_etc.tar
+-rw-r--r--  1 root  wheel  351589 Nov  8 21:16 Nov8-2116-mail.tar
+-rw-r--r--  1 root  wheel  345280 Nov  9 13:32 Nov9-1332-etc.tar
+-rw-r--r--  1 root  wheel     101 Nov  9 13:32 Nov9-1332-home.tar
+-rw-r--r--  1 root  wheel  186408 Nov  9 13:32 Nov9-1332-local_etc.tar
+-rw-r--r--  1 root  wheel  352395 Nov  9 13:32 Nov9-1332-mail.tar
+root@Neal:~/hw2/backup # exit
+exit
+
+Script done on Sun Nov  9 13:33:33 2014
